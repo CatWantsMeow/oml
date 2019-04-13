@@ -1,0 +1,27 @@
+{{ define "body" }}
+<div>
+{{ if not .Results }}
+  <div class="display-4 font-weight-lighter" align="center">Поиск не дал результатов</div>
+{{ else }}
+  <div class="display-4 font-weight-lighter" align="center">Результаты поиска</div>
+{{ end }}
+  <div class="list-group mt-3">
+  {{ range .Results }}
+    <a href="/{{ .File }}"
+       class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{ .File }}</h5>
+        <small>Релевантность: {{ .Score }} </small>
+      </div>
+      <ul class="mb-1">
+      {{ range .ContentPreview }}
+        <li>
+        {{ . }}
+        </li>
+      {{ end }}
+      </ul>
+    </a>
+  {{ end }}
+  </div>
+</div>
+{{ end }}

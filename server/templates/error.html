@@ -1,0 +1,13 @@
+{{ define "body" }}
+<div style="margin-top: 2vh;">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <div class="display-1 font-weight-lighter" align="center">{{ .Status }}</div>
+      <h1 class="font-weight-lighter" align="center">{{ .Error }}</h1>
+      {{ if .Details }}
+        <h4 class="font-weight-lighter" align="center">{{ .Details }}</h4>
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}

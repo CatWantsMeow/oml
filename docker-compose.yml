@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  es:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.1.3
+    ports:
+      - "9200:9200"
+    environment:
+      - ES_JAVA_OPTS=-Xms128m -Xmx128m
+      - xpack.security.enabled=false

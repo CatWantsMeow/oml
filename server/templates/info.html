@@ -1,0 +1,51 @@
+{{ define "body" }}
+<div>
+  <div>
+    <div class="display-4 font-weight-lighter" align="center">Матрица смежности страниц</div>
+    <table class="table table-bordered mt-3">
+      <thead>
+        <td></td>
+        {{ range .Nodes }}
+          <td class="text-center text-monospace">{{ .File }}</td>
+        {{ end }}
+      </thead>
+      <tbody>
+        {{ range $i, $node := .Nodes }}
+          <tr>
+            <td class="text-center text-monospace">{{ $node.File }}</td>
+            {{ range $i, $e := index $.A $i}}
+              {{if $e }}
+                <td class="text-center text-monospace">+</td>
+              {{ else }}
+                <td></td>
+              {{ end }}
+            {{ end }}
+          </tr>
+        {{ end }}
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <div class="display-4 font-weight-lighter" align="center">Матрица кратчайших расстояний</div>
+    <table class="table table-bordered mt-3">
+      <thead>
+        <td></td>
+        {{ range .Nodes }}
+          <td class="text-center text-monospace">{{ .File }}</td>
+        {{ end }}
+      </thead>
+      <tbody>
+        {{ range $i, $node := .Nodes }}
+          <tr>
+            <td class="text-center text-monospace">{{ $node.File }}</td>
+            {{ range $i, $e := index $.W $i}}
+              <td class="text-center text-monospace">{{ $e }}</td>
+            {{ end }}
+          </tr>
+        {{ end }}
+      </tbody>
+    </table>
+  </div>
+</div>
+{{ end }}
